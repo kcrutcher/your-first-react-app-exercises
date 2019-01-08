@@ -5,18 +5,35 @@ export default function Exercise() {
 }
 
 function Friends({friends}) {
-  return friends.map(friend => (
-    <FriendProfile key={friend.id} name={friend.name} image={friend.image} />
-  ));
+  return (
+    <Page>
+      {friends.map(friend => (
+        <FriendProfile key={friend.id} name={friend.name} image={friend.image} />
+      ))}
+    </Page>
+  );
 }
 
+function Page({ children }) {
+  return (
+    <div className="page">
+      <div className="content">{children}</div>
+    </div>
+  );
+}
+
+function Card({ children }) {
+  return <div className="card">{children}</div>;
+}
 
 function FriendProfile({name, image}) {
   return (
-    <div className="friend-profile">
-      <img src={image} alt={name} />
-      <h3>{name}</h3>
-    </div>
+    <Card>
+      <div className="friend-profile">
+        <img src={image} alt={name} />
+        <h3>{name}</h3>
+      </div>
+    </Card>
   );
 }
 
